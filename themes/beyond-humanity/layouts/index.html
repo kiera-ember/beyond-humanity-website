@@ -1,0 +1,86 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-background">
+        <div class="hero-particles"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                hero title
+            </h1>
+            <p class="hero-subtitle">
+                hero subtitle
+            </p>
+            <div class="hero-actions">
+                <a href="/articles/" class="btn btn-primary">
+                    <span>hero actions</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Content -->
+<section class="featured-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Latest Insights</h2>
+            <p class="section-subtitle">Discover our most recent explorations into technology and consciousness</p>
+        </div>
+        
+        <div class="featured-grid">
+            {{ range first 3 (where .Site.RegularPages "Section" "articles") }}
+            <article class="featured-card">
+                {{ if .Params.image }}
+                <div class="card-image">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    <div class="card-overlay"></div>
+                </div>
+                {{ end }}
+                <div class="card-content">
+                    {{ if .Params.category }}
+                    <span class="card-category">{{ .Params.category }}</span>
+                    {{ end }}
+                    <h3 class="card-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h3>
+                    <p class="card-excerpt">{{ .Summary | truncate 120 }}</p>
+                    <div class="card-meta">
+                        <time class="card-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "January 2, 2006" }}
+                        </time>
+                        {{ if .Params.readingTime }}
+                        <span class="card-reading-time">{{ .Params.readingTime }} min read</span>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        
+        <div class="section-footer">
+            <a href="/articles/" class="btn btn-outline">View All Articles</a>
+        </div>
+    </div>
+</section>
+
+<!-- Research Areas -->
+<section class="research-areas">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Research Focus</h2>
+            <p class="section-subtitle">Key areas where we push the boundaries of understanding</p>
+        </div>
+            <div class="research-card">
+                <h3 class="research-title">AI & Society</h3>
+                <p class="research-description">Understanding artificial intelligence's transformative impact on human civilization, ethics, and the future of work.</p>
+                <a href="/research/ai-society/" class="research-link">Learn More →</a>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

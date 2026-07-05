@@ -1,0 +1,325 @@
+/* CSS Variables */
+:root {
+    --primary-color: #575656;
+    --secondary-color: #575656;
+    --accent-color: red;
+    --text-primary: #1a202c;
+    --text-secondary: #718096;
+    --text-muted: red;
+    --bg-primary: #575656;
+    --bg-secondary: #575656;
+    --bg-tertiary: #575656;
+    --border-color: red;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+    --font-family: "Lato", sans-serif;
+    --font-weight: 100;
+    --font-style: normal;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    font-style: var(--font-style);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: var(--transition);
+}
+
+/* Fonts */
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    background-color: rgba(57, 56, 56, 0.9);
+}
+
+/* Navbar & menu links */
+.navbar {
+  --bs-navbar-padding-y: 0rem;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #575656 !important;
+  transition: color 0.3s ease, border-top 0.3s ease;
+}
+
+/* Active and Hover State */
+.navbar-nav .nav-link.active {
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus{
+  color: #000 !important;
+}
+
+/* Ensure the navbar toggler is visible on mobile */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #fff !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler,
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  border: none;
+  color: transparent;
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .navbar ul li a {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: border-top 0.3s ease;
+  }
+
+  /* Apply the white border to both hovered and active menu items */
+  .navbar ul li a:hover,
+  .navbar ul li a.active {
+    border-top: 5px solid #fff;
+    border-bottom: 5px solid transparent;
+  }
+}
+
+/* Adjust margin for menu links */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    margin-right: 2rem;
+  }
+}
+
+/* Ensure submenu is hidden by default */
+.submenu {
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.9); 
+  backdrop-filter: blur(3px); 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); 
+  z-index: 1000;
+  border-radius: 2px;
+  min-width: 150px; 
+  white-space: nowrap;
+}
+
+/* Show the submenu when hovering over the parent menu item */
+.nav-item:hover .submenu {
+  display: block;
+}
+
+/* Mobile-specific submenu behavior */
+@media (max-width: 991px) {
+  /* Hide submenu on mobile screens */
+  .submenu {
+    display: none !important;
+  }
+}
+
+/* Style the submenu items */
+.submenu-item {
+  display: block; /* Ensure the submenu item takes full width */
+  padding: 5px 12px; /* Smaller padding */
+  font-size: 18px; /* Smaller font size */
+  transition: background-color 0.3s ease;
+  border-radius: 2px; /* Apply border-radius to submenu item */
+  width: 100%; /* Ensure it takes up full width of the submenu */
+  color: #fff !important;
+}
+
+/* Style submenu links */
+.submenu-item a {
+  text-decoration: none;
+  font-size: 18px; /* Adjust the font size to match the smaller submenu */
+  display: block; /* Ensures the link spans the full width of the item */
+  width: 100%; /* Let the width adjust to the content */
+  padding: 5px 10px;
+  border: none; /* Remove any border on the submenu link */
+  border-radius: 2px; /* Ensure rounded corners for the link */
+  color: #fff !important;
+}
+
+/* Add hover effect for submenu items and ensure full-width background color change */
+.submenu-item:hover {
+  background-color: rgba(255, 255, 255, 0.4); 
+  border-radius: 2px; /* Keep border-radius on hover */
+}
+
+/* Ensure that submenu item links have no borders on hover */
+.nav-item:hover .submenu-item a {
+  border-top: none;
+  border-bottom: none;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    background: var(--bg-secondary);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    margin: 3px 0;
+    transition: var(--transition);
+}
+
+/* Main Content */
+#main-content {
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: rgba(57, 56, 56, 0.9);
+    padding

@@ -1,0 +1,97 @@
+baseURL = "https://www.beyondhumanity.net"
+languageCode = "en-us"
+title = "Beyond Humanity"
+theme = "beyond-humanity"
+
+[params]
+  author = "Kiera N. Ember"
+  description = "Exploring the future of human potential and technology"
+  logo = "/images/logo.png"
+  [params.footer]
+    copyright = "© 2017–{year} Kiera N. Ember"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Alterhuman Dictionary"
+  url = "/alterhuman-dictionary/"
+  weight = 2
+
+[[menu.main]]
+  name = "FAQ"
+  url = "/faq/"
+  weight = 3
+
+[[menu.main]]
+  name = "Resources"
+  url = "/resources/"
+  weight = 4
+  
+[[menu.main]] 
+  name = "General Resources"
+  url = "/general-resources"
+  weight = 41
+  parent = "Resources"
+  
+[[menu.main]] 
+  name = "Debunking the P-shift Myth"
+  url = "/debunking-the-p-shift-myth"
+  weight = 42
+  parent = "Resources"
+  
+[[menu.main]] 
+  name = "Help! Is this gatekeeping?"
+  url = "/help-is-this-gatekeeping"
+  weight = 43
+  parent = "Resources"
+
+[[menu.main]]
+  name = "My Writings"
+  url = "/my-writings/"
+  weight = 5
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 6
+  
+[[menu.main]] 
+  name = "About Me"
+  url = "/about-me"
+  weight = 61
+  parent = "About"
+  
+[[menu.main]] 
+  name = "What am I up to?"
+  url = "/what-am-i-up-to"
+  weight = 62
+  parent = "About"
+  
+[[menu.main]] 
+  name = "Contact"
+  url = "/contact"
+  weight = 63
+  parent = "About"
+
+[markup]
+[markup.goldmark.parser.attribute]
+  block = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+    respectDoNotTrack = true
+
+  [privacy.youTube]
+    disable = false
+    privacyEnhanced = true
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

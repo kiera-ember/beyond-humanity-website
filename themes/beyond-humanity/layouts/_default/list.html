@@ -1,0 +1,101 @@
+{{ define "main" }}
+<section class="page-list">
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1 class="page-title">{{ .Title }}</h1>
+            {{ if .Content }}
+            <div class="page-description">
+                {{ .Content }}
+            </div>
+            {{ end }}
+            
+            <!-- Filter/Search Options -->
+            <div class="page-filters">
+                <div class="filter-group">
+                    <select class="filter-select" id="category-filter">
+                        <option value="">All Categories</option>
+                        {{ range .Site.Taxonomies.categories }}
+                        <option value="{{ .Page.Title }}">{{ .Page.Title | title }} ({{ .Count }})</option>
+                        {{ end }}
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search articles...">
+                </div>
+            </div>
+        </header>
+        
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articles-grid">
+            {{ range .Pages }}
+            <article class="article-card" data-category="{{ .Params.category | default "uncategorized" }}" data-title="{{ .Title | lower }}" data-content="{{ .Summary | lower }}">
+                {{ if .Params.image }}
+                <div class="card-image">
+                    <a href="{{ .RelPermalink }}">
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    </a>
+                    <div class="card-overlay"></div>
+                </div>
+                {{ end }}
+                
+                <div class="card-content">
+                    {{ if .Params.category }}
+                    <span class="card-category">{{ .Params.category }}</span>
+                    {{ end }}
+                    
+                    <h2 class="card-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h2>
+                    
+                    <p class="card-excerpt">{{ .Summary | truncate 150 }}</p>
+                    
+                    <div class="card-meta">
+                        <time class="card-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "January 2, 2006" }}
+                        </time>
+                        {{ if .Params.author }}
+                        <span class="card-author">by {{ .Params.author }}</span>
+                        {{ end }}
+                        {{ if .Params.readingTime }}
+                        <span class="card-reading-time">{{ .Params.readingTime }} min read</span>
+                        {{ end }}
+                    </div>
+                    
+                    {{ if .Params.tags }}
+                    <div class="card-tags">
+                        {{ range first 3 .Params.tags }}
+                        <span class="tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        
+        <!-- Pagination -->
+        {{ if .Paginator.HasPrev }}
+        <nav class="pagination">
+            {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="pagination-link pagination-prev">← Previous</a>
+            {{ end }}
+            
+            <div class="pagination-numbers">
+                {{ range .Paginator.Pagers }}
+                {{ if eq . $.Paginator }}
+                <span class="pagination-current">{{ .PageNumber }}</span>
+                {{ else }}
+                <a href="{{ .URL }}" class="pagination-link">{{ .PageNumber }}</a>
+                {{ end }}
+                {{ end }}
+            </div>
+            
+            {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="pagination-link pagination-next">Next →</a>
+            {{ end }}
+        </nav>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
