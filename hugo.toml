@@ -1,44 +1,44 @@
-baseURL = "https://avantatenhove.com/"
+baseURL = "https://kiera-ember.github.io/beyond-humanity-website/"
 languageCode = "en-us"
-title = "avantatenhove"
-theme = "air"
+title = "kieraember"
+theme = "beyond-humanity"
 
 [params]
-  author = { name = "Aimee M. Van Tatenhove Ph.D.", siteUrl = "https://avantatenhove.com" }
+  author = { name = "Kiera N. Ember", siteUrl = "https://kiera-ember.github.io/beyond-humanity-website/" }
   gmaps_url = ""
   [params.footer]
-    copyright = "© 2018–{year} Aimee M. Van Tatenhove, Ph.D."
+    copyright = "© 2017–{year} Kiera N. Ember"
     
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
 
 [services.googleAnalytics]
-  id = "" #G-MKFPZMY2YP
+  id = ""
 
 [[menu.main]]
-  name = "About"
-  pageRef = "/"
+  name = "FAQ"
+  pageRef = "/resources"
   weight = 10
 
 [[menu.main]]
-  name = "CV"
-  pageRef = "/cv"
+  name = "Alterhuman Dictionary"
+  pageRef = "/alterhuman-dictionary"
   weight = 20
+
+[[menu.main]]
+  name = "My Writings"
+  pageRef = "/my-writings"
+  weight = 30
 
 [[menu.main]]
   name = "Resources"
   pageRef = "/resources"
-  weight = 30
-
-[[menu.main]]
-  name = "Media"
-  pageRef = "/media"
   weight = 40
 
 [[menu.main]]
-  name = "Contact"
-  pageRef = "/contact"
+  name = "About"
+  pageRef = "/"
   weight = 50
 
 [markup.goldmark.parser.attribute]
