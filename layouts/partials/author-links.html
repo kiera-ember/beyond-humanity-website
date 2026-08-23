@@ -1,0 +1,31 @@
+{{- /* Adapted from themes/congo/layouts/partials/author-links.html. */ -}}
+
+{{ with site.Language.Params.Author.links }}
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    {{ partial "hide-email.html"
+        (dict
+          "ariaLabel" ("email" | title)
+          "email" "amv48@cornell.edu"
+          "classCommon" "px-1"
+          "classDisabled" "hover:text-neutral-200 dark:hover:text-neutral-700"
+          "classEnabled" "transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400 will-change-transform text-decoration-none"
+          "Content" (partial "icon.html" "email")
+        )
+    }}
+    {{ range $links := . }}
+      {{ range $name, $url := $links }}
+        {{ if ne $name "email" }}
+          <a
+            class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400 text-decoration-none"
+            style="will-change:transform;"
+            href="{{ $url | safeURL }}"
+            target="_blank"
+            aria-label="{{ $name | title }}"
+            rel="me noopener noreferrer"
+            >{{ partial "icon.html" $name }}</a
+          >
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

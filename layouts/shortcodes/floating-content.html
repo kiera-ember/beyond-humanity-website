@@ -1,0 +1,11 @@
+{{ $height := .Get "height" | default "auto" }}
+{{ $width := .Get "width" | default "100%" }}
+
+<div class="flex-container" style="display: flex; flex-direction: row; flex-wrap: wrap; height:{{ $height }}">
+  {{ $textalign := .Get "text-align" | default "center" }}
+  {{ range (split .Inner "---") }}
+    <div style="align-self:center; text-align: {{ $textalign }}; height: {{ $height }}; width: {{ $width }};">
+      {{ . | markdownify | emojify  | safeHTML }}
+    </div>
+  {{ end }}
+</div>

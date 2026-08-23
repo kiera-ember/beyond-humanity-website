@@ -1,0 +1,76 @@
+{{- /*
+Renders an embedded YouTube playlist. Modified from default Hugo youtube shortcode.
+
+@param {bool} [allowFullScreen=true] Whether the iframe element can activate full screen mode.
+@param {bool} [autoplay=false] Whether to automatically play the video. Forces mute to be true.
+@param {string} [class] The class attribute of the wrapping div element. When specified, removes the style attributes from the iframe element and its wrapping div element.
+@param {bool} [controls=true] Whether to display the video controls.
+@param {int} [end] The time, measured in seconds from the start of the video, when the player should stop playing the video.
+@param {string} [list] The playlist id.
+@param {string} [loading=eager] The loading attribute of the iframe element.
+@param {bool} [loop=false] Whether to indefinitely repeat the video. Ignores the start and end arguments after the first play.
+@param {bool} [mute=false] Whether to mute the video. Always true when autoplay is true.
+@param {int} [start] The time, measured in seconds from the start of the video, when the player should start playing the video.
+@param {string} [title] The title attribute of the iframe element. Defaults to "YouTube video".
+
+@returns {template.HTML}
+
+@reference https://developers.google.com/youtube/player_parameters
+
+@example {{< youtube-playlist list=0RKpf3rK57I >}}
+@example {{< youtube-playlist list=0RKpf3rK57I loading=lazy start=30 >}}
+*/}}
+
+{{- /* Set defaults. */}}
+  {{- $allowFullScreen := true }}
+  {{- $autoplay := 0 }}
+  {{- $class := "" }}
+  {{- $controls := 1 }}
+  {{- $end := 0 }}
+  {{- $loading := "eager" }}
+  {{- $loop := 0 }}
+  {{- $mute := 0 }}
+  {{- $start := 0 }}
+  {{- $title := "YouTube video" }}
+  {{- $iframeAllowList := "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }}
+
+  {{- /* Define src attribute. */}}
+  {{- $host := "www.youtube-nocookie.com/" }}
+  {{- $list := or (.Get "list") }}
+  {{- $src := printf "https://%s/embed/videoseries?list=%s" $host $list }}
+     {{- $params := dict
+      "autoplay" $autoplay
+      "controls" $controls
+      "end" $end
+      "mute" $mute
+      "start" $start
+      "loop" $loop
+      }}
+
+    {{- /* Set div attributes. */}}
+    {{- $divStyle := "position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;" }}
+    {{- if $class }}
+      {{- $divStyle = "" }}
+    {{- end }}
+
+    {{- /* Set iframe attributes. */}}
+    {{- $iframeStyle := "position: absolute; top: 0; left: 0; border: 0;" }}
+      {{- $height := .Get "height" | default "auto" }}
+      {{- $width := .Get "width" | default "100%" }}
+    {{- if $class }}
+      {{- $iframeStyle = "" }}
+    {{- end }}
+    
+  {{- /* Render. */ -}}
+    <div
+      {{- with $class }} class="{{ . }}" {{- end }}
+      {{- with $divStyle }} style="{{ . | safeCSS }}; height: {{ $height }}; width: {{ $width }};" {{- end -}}
+    >
+      <iframe
+      {{- with $iframeAllowList }} allow="{{ . }}" {{- end }}
+      {{- with $loading }} loading="{{ . }}" {{- end }}
+      {{- with $src }} src="{{ . }}" {{- end }}
+      {{- with $iframeStyle}} style="{{ . | safeCSS }}; height: {{ $height }}; width: {{ $width }};" {{- end }}
+      {{- with $title }} title="{{ . }}" {{- end -}}
+      ></iframe>
+    </div>

@@ -1,0 +1,21 @@
+{{- /* Adapted from themes/congo/layouts/partials/home/profile.html. */ -}}
+
+{{ $textalign := .Get "text-align" }}
+<article class="flex flex-col items-center justify-center">
+  <!-- Container for profile header and "About me" section. -->
+  <div class="flex flex-col sm:flex-row w-full items-center sm:items-stretch sm:text-left" style="text-align: {{ $textalign }};">
+    {{ partial "profile.html" }}
+    <section class="flex flex-col prose dark:prose-invert justify-center mt-12 sm:mt-0" style="text-align: {{ $textalign }};">
+      {{ .Content | emojify }}
+    </section>
+  </div>
+  <section class="prose dark:prose-invert mt-12">
+    {{ with .Site.GetPage "/projects" }}
+      {{ .Content }}
+    {{ end }}
+    {{ with .Site.GetPage "/pubs" }}
+      {{ .Content }}
+    {{ end }}
+  </section>
+</article>
+

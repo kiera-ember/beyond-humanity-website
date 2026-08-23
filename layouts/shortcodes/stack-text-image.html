@@ -1,0 +1,95 @@
+<div>
+<head>
+    <style>
+        .flex-outer {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .flex-inner {
+          flex: 1;
+          padding: 15px;
+        }
+        
+        @media (min-width: 768px) {
+          .flex-outer {
+            flex-direction: row;
+          }
+        }
+    
+        figure {
+            position: relative;
+            text-align: center;
+        }
+
+        @media (max-width: 360px) {
+          .figcaption-phone {
+              font-style: italic;
+              font-size: 9px;
+              color: #FFF;
+              text-align: center;
+              text-shadow: 0.7px 0.7px 1px #333;
+              position: absolute;
+              bottom: 1%;
+              width: 100%;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .figcaption-tablet {
+              font-style: italic;
+              font-size: 9px;
+              color: #FFF;
+              text-align: center;
+              text-shadow: 0.7px 0.7px 1px #333;
+              position: absolute;
+              bottom: 1%;
+              width: 100%;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .figcaption-browser {
+              font-style: italic;
+              font-size: 9px;
+              color: #FFF;
+              position: absolute;
+              bottom: 1%;
+              width: 100%;
+          }
+        }
+        
+    </style>
+</head>
+<body>
+    {{ $wrap := .Get "wrap" }}
+    {{ $src := .Get "src" }}
+    {{ $resizephone := .Get "resizephone" }}
+    {{ $resizetablet := .Get "resizetablet" }}
+    {{ $order1 := .Get "order1" | default "1" }}
+    {{ $order2 := .Get "order2" | default "2" }}
+    {{ $alt := .Get "alt" }}
+    {{ $caption := .Get "caption" }}
+    {{ $width := .Get "width" }}
+
+<div class="flex-outer" style="flex-wrap:{{ $wrap }}">
+  <div class="flex-inner" style="order:{{ $order1 }}">
+    <figure>
+        <img class="img-browser {{ $resizephone }} {{ $resizetablet }}" src="{{ $src }}" alt="{{ $alt }}" width="{{ $width }}">
+        {{ if $caption }}
+            <figcaption class="figcaption-browser figcaption-phone figcaption-tablet">
+              {{ $caption }}
+            </figcaption>
+        {{ end }}
+    <figure>
+  </div>
+  
+  <div class="flex-inner" style="order:{{ $order2 }}">
+    <p>
+    {{ .Inner }}
+    </p>
+  </div>
+
+</div>
+</body>
+</div>

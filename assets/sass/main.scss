@@ -1,0 +1,616 @@
+/*
+=======================================================
+=                   CSS Variables                     =
+=======================================================
+*/
+
+/* 
+Main color for the website
+It can be overridden in the config file by setting "Params.mainColor" to any color value
+*/
+:root {
+  --main-color-bg: #f5f5f4; /* default background color */
+  --main-color-text: #000; /* default text color */
+  overflow-x: hidden;
+  
+}
+
+/*
+=======================================================
+*                   HTML elements                     *
+=======================================================
+*/
+
+section div h1 {
+  color:var(--main-color-text);
+}
+
+section.odd p,
+section.odd h1 {
+  text-align: right;
+  color: #190;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  width: 95%; /* Responsive width */
+}
+
+/* Base Triangle Arrow */
+section.odd::after {
+  content: "";
+  position: absolute;
+  bottom: -40px; /* Space below the section */
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 60px solid var(--main-color-bg); /* Triangle shape */
+}
+
+/* Left Triangle - Aligns Exactly with Left Edge of .container */
+section.odd-left::after {
+  left: calc((100% - min(960px, 90vw)) / 2); /* Left edge of .container */
+  transform: translateX(0); /* No additional shifting */
+}
+
+/* Right Triangle - Aligns Exactly with Right Edge of .container */
+section.odd-right::after {
+  left: calc((100% - min(960px, 90vw)) / 2 + min(960px, 90vw)); /* Right edge of .container */
+  transform: translateX(-100%); /* Aligns correctly */
+}
+
+/* Ensure Sections Have Proper Positioning */
+section.odd {
+  position: relative;
+  background-color: var(--main-color-bg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+
+  section.odd-left::after {
+    left: calc((100% - min(960px, 95vw)) / 2);
+  }
+
+  section.odd-right::after {
+    left: calc((100% - min(960px, 95vw)) / 2 + min(960px, 95vw));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  section.odd-left::after {
+    left: calc((100% - 100vw) / 2);
+  }
+
+  section.odd-right::after {
+    left: calc((100% - 100vw) / 2 + 100vw);
+  }
+}
+
+body {
+  background-color: var(--main-color-bg);
+  color: var(--main-color-text);
+  font-family: Open Sans;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--main-color-text);
+  font-weight: bold;
+}
+
+p {
+  color: var(--main-color-text);
+  text-align: justify;
+}
+
+ul {
+  list-style-position: outside;
+}
+
+ul.inside {
+  list-style-position: inside;
+}
+
+li-image-left {
+  display: list-item;
+  margin-block-start: 0em;
+  margin-block-end: 0.25em;
+  margin-inline-start: 24em;
+  padding-inline-start: 0px;
+}
+
+/*
+=======================================================
+*                   Custom Styles                     *
+=======================================================
+*/
+
+ /* unvisited link */
+a {
+  text-decoration: none;
+  font-weight: 650;
+  color: #997777;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+}
+
+.bg-main-color {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.btn.main-color {
+  background-color: var(--main-color-bg);
+  color: #fff;
+}
+
+.card-img {
+  border: none;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.75);
+}
+
+.catchline {
+  font-style: italic;
+}
+
+.cv-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 75%; /* 4:3 Aspect Ratio (divide 3 by 4 = 0.75) */
+}
+
+.icon svg {
+  height: 2em;
+  width: 2em;
+}
+
+.image-center {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.image-left {
+  float:left;
+  max-width: 100%;
+  margin-right: 20px;
+}
+
+.image-right {
+  float:right;
+  max-width: 100%;
+  margin-left: 20px;
+}
+
+@media (max-width: 500px) {
+   .img-phone-h {
+     height: 150px;
+     width: auto;
+     padding-right: 15px;
+   }
+   .img-phone-w {
+     height: auto;
+     width: 100px;
+     padding-right: 15px;
+   }
+}
+
+@media (max-width: 768px) {
+   .img-tablet-h {
+     height: 200px;
+     width: auto;
+     padding-right: 15px;
+   }
+   .img-tablet-w {
+     height: auto;
+     width: 350px;
+     padding-right: 15px;
+   }
+}
+
+@media (min-width: 768px) {
+   .img-browser {
+     overflow: hidden;
+     height: auto;
+     padding-right: 15px;
+   }
+}
+
+.main-color {
+  color: var(--main-color-bg);
+}
+
+.no-border {
+  border: none;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.table-narrow {
+  width: 25%;
+}
+
+.table-wide {
+  width: 100%;
+}
+
+td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-s {
+  font-size: 10px;
+}
+
+.text-m {
+  font-size: 12px;
+}
+
+.text-l {
+  font-size: 16px;
+}
+
+.text-xl {
+  font-size: 20px;
+}
+
+.text-2xl {
+  font-size: 24px;
+}
+
+.text-4xl {
+  font-size: 48px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.video {
+    flex: 1;
+    min-width: 300px; /* Adjust this value based on your needs */
+    margin: 10px;
+}
+
+/*
+=======================================================
+*                Navbar, Menu Links                   *
+=======================================================
+*/
+
+.navbar {
+  --bs-navbar-padding-y: 0rem;
+  background: rgba(0, 0, 0, 0.8);
+  font-family: Roboto;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+/* Active and Hover State */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Ensure the navbar toggler is visible on mobile */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    min-width: 150px; 
+    white-space: nowrap; 
+  }
+
+  .nav-link {
+    display: block; /* Ensures the link spans the full width of the item */
+    width: 100%; /* Let the width adjust to the content */
+    padding: 5px 10px;
+    border: none; /* Remove any border on the submenu link */
+    transition: background-color 0.1s ease;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .navbar-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #fff;
+}
+
+.navbar-toggler,
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  border: none;
+  color: transparent;
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .navbar ul li a {
+    border-top: 5px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+  /* Apply the white border to both hovered and active menu items */
+  .navbar ul li a:hover,
+  .navbar ul li a.active {
+    border-top: 5px solid transparent;
+    border-bottom: 3px solid #fff;
+  }
+}
+
+/* Adjust margin for menu links */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    margin-right: 2rem;
+  }
+}
+
+/*
+=======================================================
+*                       SubMenu                       *
+=======================================================
+*/
+
+.submenu {
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); 
+  z-index: 1000;
+  min-width: 150px; 
+  white-space: nowrap; 
+}
+
+/* Show the submenu when hovering over the parent menu item */
+.nav-item:hover .submenu {
+  display: block;
+}
+
+/* Mobile-specific submenu behavior */
+@media (max-width: 991px) {
+  /* Hide submenu on mobile screens */
+  .submenu {
+    display: none !important;
+  }
+}
+
+/* Style the submenu items */
+.submenu-item {
+  display: block; /* Ensure the submenu item takes full width */
+  padding: 5px 12px; /* Smaller padding */
+  font-size: 14px; /* Smaller font size */
+  transition: background-color 0.1s ease;
+  width: 100%; /* Ensure it takes up full width of the submenu */
+}
+
+/* Style submenu links */
+.submenu-item a {
+  text-decoration: none;
+  font-size: 14px; /* Adjust the font size to match the smaller submenu */
+  display: block; /* Ensures the link spans the full width of the item */
+  width: 100%; /* Let the width adjust to the content */
+  padding: 5px 10px;
+  border: none; /* Remove any border on the submenu link */
+}
+
+/* Add hover effect for submenu items and ensure full-width background color change */
+.submenu-item:hover {
+  background-color: rgba(255, 255, 255, 0.3); 
+}
+
+/* Ensure that submenu item links have no borders on hover */
+.nav-item:hover .submenu-item a {
+  border-top: none;
+  border-bottom: none;
+}
+
+/*
+=======================================================
+=                   Header Image                      =
+=======================================================
+*/
+
+.headerImage {
+  background-size: cover;
+  min-height: 40vh;
+  background-position: center;
+  position: relative;
+  color: #fff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+  z-index: 999;
+}
+
+.color-overlay { /* Apply color or blur filter to header images */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px); 
+}
+
+.color-overlay h1 {
+  background-color: transparent;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.75);
+}
+
+.color-overlay h2 {
+  background-color: transparent;
+  text-align: center;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.75);
+}
+
+/*
+=======================================================
+=                      Gallery                        =
+=======================================================
+*/
+
+/* Wrapper for the image to ensure the zoom effect is contained */
+.image-zoom-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.75);
+}
+
+/* Wrapper for the image to ensure the zoom effect is contained */
+.image-zoom-wrapper-top {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px 3px 0px 0px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.75);
+}
+
+/* Zoom effect */
+.zoom-image {
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  /* Ensure the image fills the container */
+  height: 100%;
+  /* Ensure the image maintains its aspect ratio */
+  border-radius: 3px;
+}
+
+/* Zoom effect */
+.zoom-image-top {
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  /* Ensure the image fills the container */
+  height: 100%;
+  /* Ensure the image maintains its aspect ratio */
+  border-radius: 3px 3px 0px 0px;
+}
+
+
+/* Apply zoom effect on hover */
+.image-zoom-wrapper-top:hover .zoom-image-top,
+.image-zoom-wrapper:hover .zoom-image {
+  transform: scale(1.1);
+  /* Scale the image up by 20% on hover */
+}
+
+/*
+=======================================================
+=                    Google Maps                      =
+=======================================================
+*/
+.gmaps {
+  padding-bottom: 90%;
+  overflow: hidden;
+  height: 0;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .gmaps {
+    padding-bottom: 30%;
+  }
+}
+
+.gmaps iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+=======================================================
+=                       Footer                        =
+=======================================================
+*/
+
+footer {
+  background-color: #fff;
+}
+
+footer .nav-link:hover {
+  color: #fff;
+}

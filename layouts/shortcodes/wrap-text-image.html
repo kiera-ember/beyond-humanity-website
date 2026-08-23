@@ -1,0 +1,66 @@
+<div>
+<head>
+    <style>
+        @media (max-width: 360px) {
+          .figcaption-phone {
+              font-style: italic;
+              font-size: 9px;
+              color: #FFF;
+              text-align: center;
+              text-shadow: 0.7px 0.7px 1px #333;
+              position: absolute;
+              bottom: 1%;
+              width: 100%;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .figcaption-tablet {
+              font-style: italic;
+              font-size: 9px;
+              color: #FFF;
+              text-align: center;
+              text-shadow: 0.7px 0.7px 1px #333;
+              position: absolute;
+              bottom: 1%;
+              width: 100%;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .figcaption-browser {
+              font-style: italic;
+              font-size: 9px;
+              color: #FFF;
+              position: absolute;
+              bottom: 1%;
+              width: 100%;
+          }
+        }
+    </style>
+</head>
+<body>
+    {{ $imagealign := .Get "image-align" }}
+    {{ $textalign := .Get "text-align" | default "left" }}
+    {{ $src := .Get "src" }}
+    {{ $resizephone := .Get "resizephone" }}
+    {{ $resizetablet := .Get "resizetablet" }}
+    {{ $alt := .Get "alt" }}
+    {{ $caption := .Get "caption" }}
+    {{ $width := .Get "width" }}
+    
+  <div style="float:{{ $imagealign }}">
+      <img class="img-browser {{ $resizephone }} {{ $resizetablet }}" src="{{ $src }}" alt="{{ $alt }}" width="{{ $width }}">
+            {{ if $caption }}
+              <figcaption class="figcaption-browser figcaption-phone figcaption-tablet">
+            {{ end }}
+  </div>
+  
+  <div text-align="{{ $textalign }}">
+    <p>
+    {{ .Inner }}
+    </p>
+  </div>
+
+</body>
+</div>

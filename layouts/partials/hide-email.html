@@ -1,0 +1,118 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"><style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head><body>{{-
+  $hash := sha256 .email | truncate 8 ""
+-}}
+<a id="email-disabled-{{$hash}}" aria-label=".ariaLabel" aria-haspopup="dialog" tabindex="0" data-title="Turn on JavaScript for email address" class="
+    {{.classCommon}}
+    {{.classDisabled}}
+    relative
+
+    hover:after:content-[attr(data-title)]
+    hover:after:absolute
+    hover:after:text-xs
+    hover:after:text-neutral-700
+    hover:after:bg-neutral-300
+    hover:after:top-8
+    hover:after:left-0
+    hover:after:p-2
+    hover:after:text-nowrap
+    hover:after:rounded-md
+
+    focus:after:content-[attr(data-title)]
+    focus:after:absolute
+    focus:after:text-xs
+    focus:after:text-neutral-700
+    focus:after:bg-neutral-300
+    focus:after:top-8
+    focus:after:left-0
+    focus:after:p-2
+    focus:after:text-nowrap
+    focus:after:rounded-md
+  ">
+  {{ .Content }}
+</a>
+<a id="email-{{$hash}}" aria-label=".ariaLabel" class="
+    hidden
+    {{.classCommon}}
+    {{.classEnabled}}
+  ">
+  {{ .Content }}
+</a>
+
+{{- $email := printf "mailto:%s" .email -}}
+
+{{- /* Remove '@' while remembering its original position. */ -}}
+{{- $atPos := slice -}}
+{{- range $idx := seq 0 (sub (len $email) 1) -}}
+  {{- if eq "@" (substr $email $idx 1) -}}
+    {{- $atPos = append $idx $atPos -}}
+  {{- end -}}
+{{- end -}}
+{{- $email = replace $email "@" "" -}}
+
+{{- /* Maps indices to email address characters. */ -}}
+{{- $chars := newScratch -}}
+
+{{- /* Maps indices to original character index. */ -}}
+{{- $idxMap := newScratch -}}
+
+{{- /* Initialize state. */ -}}
+{{- range $idx := seq 0 (sub (len $email) 1) -}}
+  {{- $chars.Set (string $idx) (substr $email $idx 1) -}}
+  {{- $idxMap.Set (string $idx) (string $idx) -}}
+{{- end -}}
+
+{{- /* Shuffle. */ -}}
+{{- range $idx1 := seq 0 (sub (len $email) 1) -}}
+  {{- $idx2 := math.Rand | mul (len $email) | math.Floor -}}
+
+  {{- $char1 := $chars.Get (string $idx1) -}}
+  {{- $char2 := $chars.Get (string $idx2) -}}
+  {{- $chars.Set (string $idx1) $char2 -}}
+  {{- $chars.Set (string $idx2) $char1 -}}
+
+  {{- $v1 := $idxMap.Get (string $idx1) -}}
+  {{- $v2 := $idxMap.Get (string $idx2) -}}
+  {{- $idxMap.Set (string $idx1) $v2 -}}
+  {{- $idxMap.Set (string $idx2) $v1 -}}
+{{- end -}}
+
+{{- /* Build a reverse map for decoding $chars. */ -}}
+{{- $decodeMap := newScratch -}}
+{{- range $idx := seq 0 (sub (len $email) 1) -}}
+  {{- $decodeMap.Set ($idxMap.Get (string $idx)) (string $idx) -}}
+{{- end -}}
+
+<script id="script-{{$hash}}">
+  const scrambled = "
+    {{- range $idx := seq 0 (sub (len $email) 1) -}}
+      {{- $chars.Get (string $idx) -}}
+    {{- end -}}
+  ";
+  const key = new Array(
+    {{- range $idx := seq 0 (sub (len $email) 1) -}}
+      {{- int ($decodeMap.Get (string $idx)) -}},
+    {{- end -}}
+  );
+  const atPos = new Set([
+    {{- range $pos := $atPos -}}
+      {{- $pos -}},
+    {{- end -}}
+  ]);
+  let link = "";
+  while (atPos.has(link.length)) {
+    link += "@";
+  }
+  for (let i = 0; i < {{len $email}}; i++) {
+    link += scrambled.charAt(key[i]);
+    while (atPos.has(link.length)) {
+      link += "@";
+    }
+  }
+  emailElt = document.getElementById("email-{{$hash}}");
+  emailElt.href = link;
+  emailElt.style.display = "initial";
+  disabledElt = document.getElementById("email-disabled-{{$hash}}");
+  disabledElt.parentNode.removeChild(disabledElt);
+</script>
+</body></html>
