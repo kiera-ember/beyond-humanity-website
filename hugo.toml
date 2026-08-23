@@ -1,6 +1,6 @@
 baseURL = "https://kiera-ember.github.io/beyond-humanity-website/"
 languageCode = "en-us"
-title = "kieraember"
+title = "Beyond Humanity"
 theme = "beyond-humanity"
 
 [params]
