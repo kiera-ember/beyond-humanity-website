@@ -1,9 +1,8 @@
 [params]
 
 [params.author]
-  name = "Aimee M. Van Tatenhove, Ph.D."
+  name = "Kiera N. Ember"
   image = "portrait-color.jpg"
-  headline = "Quantitiative Ecologist"
   bio = ""
   links = [
   #   { email = "mailto:hello@your_domain.com" },
@@ -19,26 +18,26 @@
   #   { facebook = "https://facebook.com/username" },
   #   { flickr = "https://www.flickr.com/photos/username/" },
   #   { foursquare = "https://foursquare.com/username" },
-    { github = "https://github.com/s0avant" },
+  #   { github = "https://github.com/" },
   #   { gitlab = "https://gitlab.com/username" },
   #   { google = "https://www.google.com/" },
-    { google-scholar = "https://scholar.google.com/citations?hl=en&user=-Uax-WsAAAAJ" },
+  #   { google-scholar = "https://scholar.google.com/" },
   #   { hashnode = "https://username.hashnode.dev" },
-  #   { instagram = "https://www.instagram.com/aimeevantatenhove/" },
+  #   { instagram = "https://www.instagram.com/" },
   #   { keybase = "https://keybase.io/username" },
   #   { kickstarter = "https://www.kickstarter.com/profile/username" },
   #   { kofi = "https://ko-fi.com/username" },
   #   { lastfm = "https://lastfm.com/user/username" },
-    { linkedin = "https://www.linkedin.com/in/aimee-van-tatenhove-319b0bb4/" },
+  #   { linkedin = "https://www.linkedin.com/" },
   #   { mastodon = "https://mastodon.instance/@username" },
   #   { medium = "https://medium.com/username" },
   #   { mendeley = "https://www.mendeley.com/" },
   #   { microsoft = "https://www.microsoft.com/" },
-    { orcid = "https://orcid.org/0000-0003-2483-1055" },
+  #   { orcid = "https://orcid.org/" },
   #   { patreon = "https://www.patreon.com/username" },
   #   { pinterest = "https://pinterest.com/username" },
   #   { reddit = "https://reddit.com/user/username" },
-    { researchgate = "https://www.researchgate.net/profile/Aimee-Van-Tatenhove" },
+  #   { researchgate = "https://www.researchgate.net/" },
   #   { slack = "https://workspace.url/team/userid" },
   #   { snapchat = "https://snapchat.com/add/username" },
   #   { soundcloud = "https://soundcloud.com/username" },
@@ -51,6 +50,6 @@
   #   { twitch = "https://twitch.tv/username" },
   #   { whatsapp = "https://wa.me/phone-number" },
   #   { x-twitter = "https://twitter.com/username" },
-    { youtube = "https://www.youtube.com/@aimeevantatenhove7894" },
+  #   { youtube = "https://www.youtube.com/" },
   #   { xing = "https://xing.com/profile/username" },
   ]
