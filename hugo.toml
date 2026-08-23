@@ -17,8 +17,13 @@ theme = "beyond-humanity"
   id = ""
 
 [[menu.main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+
+[[menu.main]]
   name = "FAQ"
-  pageRef = "/resources"
+  pageRef = "/faq"
   weight = 10
 
 [[menu.main]]
@@ -38,7 +43,7 @@ theme = "beyond-humanity"
 
 [[menu.main]]
   name = "About"
-  pageRef = "/"
+  pageRef = "/about"
   weight = 50
 
 [markup.goldmark.parser.attribute]
