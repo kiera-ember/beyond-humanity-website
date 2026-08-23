@@ -1,6 +1,8 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Title }} | {{ .Title }} | {{ .Params.catchline }} | {{ .Summary }}">
+  <title>{{ .Site.Title }} | {{ .Title }} </title>
 
 {{ if .IsHome }}
 <title>{{ .Site.Title }}</title>
@@ -31,3 +33,11 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
 {{ else }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ end }}
+
+<!-- Inline style to define the custom color -->
+<style>
+  :root {
+    --main-color: {{ .Site.Params.mainColor }};
+  }
+  </style>
+</head>

@@ -1,7 +1,5 @@
 ---
-title: About
-catchline:
-type:
+Title: Alterhuman Dictionary
 ---
 #### Past Projects
 

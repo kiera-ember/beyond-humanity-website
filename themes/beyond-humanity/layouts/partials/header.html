@@ -31,6 +31,7 @@
               {{ $menuLink = replace $menuLink (printf "/%s" $subdirectory) "" }}
             {{ end }}
 
+
             {{ $isActive := false }}
 
             <!-- Handle the homepage link specially, so that it's active only on the homepage -->
@@ -67,12 +68,11 @@
 
   <!-- Dynamic Header Image -->
   {{ with .Resources.Get "featured-image.jpg" }}
-    {{ $largeImage := .Resize "1920x webp q75" }}
-    {{ $smallImage := .Resize "960x webp q75" }}
-    <div class="headerImage"
-      small-Image="{{ $smallImage.RelPermalink | relURL }}"
+    {{ $largeImage := .Resize "960x webp q75" }}
+    {{ $smallImage := .Resize "480x webp q75" }}
+    <div class="headerImage" small-Image="{{ $smallImage.RelPermalink | relURL }}"
       large-Image="{{ $largeImage.RelPermalink | relURL }}">
-  {{ end }}
+ {{ end }}
 
   <div class="color-overlay d-flex flex-column justify-content-center align-items-center align-content-center">
     <h1>{{ .Title }}</h1>
@@ -80,6 +80,5 @@
       <h2>{{ . }}</h2>
     {{ end }}
   </div>
-
-</div>
+  </div>
 </header>
