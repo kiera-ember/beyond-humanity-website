@@ -1,0 +1,12 @@
+name = "Beyond Humanity"
+license = "MIT"
+licenselink = "https://github.com/your-username/beyond-humanity-theme/blob/master/LICENSE"
+description = "A clean Hugo theme for BeyondHumanity.net"
+homepage = "https://github.com/your-username/beyond-humanity-theme"
+tags = ["blog", "alterhuman", "resource", "dictionary", "clean", "responsive"]
+features = ["responsive", "dark-mode", "syntax-highlighting"]
+min_version = "0.80.0"
+
+[author]
+  name = "Kiera N. Ember"
+  homepage = "https://www.beyondhumanity.net"

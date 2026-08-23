@@ -72,12 +72,7 @@
     {{ $smallImage := .Resize "480x webp q75" }}
     <div class="headerImage" small-Image="{{ $smallImage.RelPermalink | relURL }}"
       large-Image="{{ $largeImage.RelPermalink | relURL }}">
-  {{ else }}
-    <!-- If the featured-image.jpg doesn't exist, use the default static image -->
-    <div class="headerImage" small-Image="{{ "img/header-480.jpg" | relURL }}" large-Image="{{ "img/header-960.jpg" | relURL }}">
-  {{ end }}
-
-  <img src="{{ "img/loader.gif" | relURL }}" alt="Loading..." class="loader" />
+ {{ end }}
 
   <div class="color-overlay d-flex flex-column justify-content-center align-items-center align-content-center">
     <h1>{{ .Title }}</h1>
@@ -85,6 +80,5 @@
       <h2>{{ . }}</h2>
     {{ end }}
   </div>
-
-</div>
+  </div>
 </header>
