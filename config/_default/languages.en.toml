@@ -3,6 +3,7 @@
 [params.author]
   name = "Kiera N. Ember"
   image = "portrait-color.jpg"
+  headline = "Western Dragon"
   bio = ""
   links = [
   #   { email = "mailto:hello@your_domain.com" },
@@ -18,26 +19,21 @@
   #   { facebook = "https://facebook.com/username" },
   #   { flickr = "https://www.flickr.com/photos/username/" },
   #   { foursquare = "https://foursquare.com/username" },
-  #   { github = "https://github.com/" },
+    { github = "https://github.com/kiera-ember" },
   #   { gitlab = "https://gitlab.com/username" },
   #   { google = "https://www.google.com/" },
-  #   { google-scholar = "https://scholar.google.com/" },
   #   { hashnode = "https://username.hashnode.dev" },
-  #   { instagram = "https://www.instagram.com/" },
   #   { keybase = "https://keybase.io/username" },
   #   { kickstarter = "https://www.kickstarter.com/profile/username" },
   #   { kofi = "https://ko-fi.com/username" },
   #   { lastfm = "https://lastfm.com/user/username" },
-  #   { linkedin = "https://www.linkedin.com/" },
   #   { mastodon = "https://mastodon.instance/@username" },
   #   { medium = "https://medium.com/username" },
   #   { mendeley = "https://www.mendeley.com/" },
   #   { microsoft = "https://www.microsoft.com/" },
-  #   { orcid = "https://orcid.org/" },
   #   { patreon = "https://www.patreon.com/username" },
   #   { pinterest = "https://pinterest.com/username" },
   #   { reddit = "https://reddit.com/user/username" },
-  #   { researchgate = "https://www.researchgate.net/" },
   #   { slack = "https://workspace.url/team/userid" },
   #   { snapchat = "https://snapchat.com/add/username" },
   #   { soundcloud = "https://soundcloud.com/username" },
@@ -50,6 +46,6 @@
   #   { twitch = "https://twitch.tv/username" },
   #   { whatsapp = "https://wa.me/phone-number" },
   #   { x-twitter = "https://twitter.com/username" },
-  #   { youtube = "https://www.youtube.com/" },
+    { youtube = "https://www.youtube.com/@kieraember" },
   #   { xing = "https://xing.com/profile/username" },
   ]
