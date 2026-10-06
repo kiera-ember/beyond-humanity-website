@@ -1,5 +1,0 @@
----
-title: About
-catchline:
-type:
----
