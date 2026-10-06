@@ -1,3 +1,7 @@
 [user]
     name = Kiera N. Ember
     email = kiera.n.ember@gmail.com
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
