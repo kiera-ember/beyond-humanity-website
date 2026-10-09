@@ -1,4 +1,4 @@
-baseURL = "https://example.org/"
+baseURL = "https://www.beyondhumanity.net/"
 locale = "en-us"
 title = "Beyond Humanity"
 theme = "hugo-theme-cleanwhite"
@@ -77,11 +77,20 @@ home = ["HTML", "RSS", "Algolia"]
   #git           = "full profile url for git user"
   
   [[params.additional_menus]]
+  title =  "Alterhuman Dictionary"
+  href =  "/alterhuman-dictionary/"
+  [[params.additional_menus]]
   title =  "FAQ"
   href =  "/faq/"
   [[params.additional_menus]]
-  title =  "Alterhuman Dictionary"
-  href =  "/alterhuman-dictionary/"
+  title =  "Resources"
+  href =  "/resources/"
+  [[params.additional_menus]]
+  title =  "My Writings"
+  href =  "/my-writings/"
+  [[params.additional_menus]]
+  title =  "About"
+  href =  "/about/"
 
 [outputFormats.Algolia]
 baseName = "algolia"
