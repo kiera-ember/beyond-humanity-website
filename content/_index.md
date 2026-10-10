@@ -1,5 +1,5 @@
 ---
 title: About
 catchline:
-type:
+type: single
 ---
